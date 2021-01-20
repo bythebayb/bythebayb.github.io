@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ site.name }}{% if page.title %} · {{ page.title }}{% endif %}</title>
+
+    <meta charset="utf-8" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="author" content="{{ site.name }}" />
+
+    {% if page.excerpt %}
+    <meta name="description" content="{{ page.excerpt | markdownify | remove: "<p>" | remove: "</p>" | strip_newlines | strip_html | truncatewords: 20 }}" />
+    <meta property="og:description" content="{{ page.excerpt | markdownify | remove: "<p>" | remove: "</p>" | strip_newlines | strip_html | truncatewords: 20 }}" />
+    <meta property="og:image" content="{{ site.url }}/images/preview/{{ page.images[0] }}">
+    {% else %}
+    <meta name="description" content="{{ site.description }}">
+    <meta property="og:description" content="{{ site.description }}" />
+    <meta property="og:image" content="{{ site.url }}/header-preview.jpg">
+    {% endif %}
+
+    <meta property="title" content="{{ site.name }}{% if page.title %} · {{ page.title }}{% endif %}" />
+    <meta property="og:title" content="{{ site.name }}{% if page.title %} · {{ page.title }}{% endif %}" />
+    <meta property="twitter:title" content="{{ site.name }}{% if page.title %} · {{ page.title }}{% endif %}" />
+
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.baseurl }}/feed.xml" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+</head>
+
+<body>
+
+    <header class="header clearfix">
+        <div class="header-content">
+            <h1><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
+            <div class="header-description">{{ site.description }}</div>
+            <div>
+                <a class="social-media-button social-media-icon-instagram" target="_blank" href="https://www.instagram.com/bythebayb/"></a>
+                <a class="social-media-button social-media-icon-twitter" target="_blank" href="https://twitter.com/bythebayb"></a>
+                <a class="social-media-button social-media-icon-telegram" target="_blank" href="https://t.me/bythebayb"></a>
+                <a class="social-media-button social-media-icon-vk" target="_blank" href="https://vk.com/bythebayb"></a>
+                <a class="social-media-button social-media-icon-rss" target="_blank" href="/feed.xml"></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main">
+        <div id="main" role="main" class="main-content">
+            {{ content }}
+        </div>
+        
+        <footer class="footer">
+            <p>&copy; {{ 'now' | date: "%Y" }} У залива · bythebayb · <a href="/about">О блоге</a></p>
+        </footer>
+    </div>
+    
+    <script type="text/javascript" src="/fslightbox.js"></script>
+
+</body>
+</html>
